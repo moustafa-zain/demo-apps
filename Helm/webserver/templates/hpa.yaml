@@ -3,7 +3,7 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: "demo-app"
+  name: "demo"
 spec:
   minReplicas: 1
   maxReplicas: 3
