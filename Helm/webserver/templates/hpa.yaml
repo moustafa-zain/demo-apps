@@ -20,7 +20,7 @@ spec:
             matchLabels:
               resource.type: uptime_url
               metric.labels.check_id: "google-uptime"
-              resource.labels.project_id: '1014212621433'
+              resource.project_id: '1014212621433'
         target:
           type: AverageValue
           averageValue: 10m
