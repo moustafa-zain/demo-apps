@@ -24,20 +24,20 @@ spec:
     #       type: AverageValue
     #       averageValue: 10m
     
-  # - type: Pods
-  #   pods:
-  #     metric:
-  #       name: "kubernetes.io|pod|network|received_bytes_count"
-  #       selector: 
-  #         matchLabels:
-  #           resource.namespace_name: "demo"
-  #     target:
-  #       type: AverageValue
-  #       averageValue: 1k
-  - type: Pods
-    pods:
-      metric:
-        name: packets-per-second
-  target:
-        type: AverageValue
-        averageValue: 1k
+    # - type: Pods
+    #   pods:
+    #     metric:
+    #       name: "kubernetes.io|pod|network|received_bytes_count"
+    #       selector: 
+    #         matchLabels:
+    #           resource.namespace_name: "demo"
+    #     target:
+    #       type: AverageValue
+    #       averageValue: 1k
+    - type: Pods
+      pods:
+        metric:
+          name: packets-per-second
+        target:
+          type: AverageValue
+          averageValue: 1k
