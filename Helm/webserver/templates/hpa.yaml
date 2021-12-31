@@ -1,6 +1,6 @@
 ---
 # Source: ajvar/templates/hpa.yaml
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: "demo"
@@ -25,13 +25,20 @@ spec:
     #       type: AverageValue
     #       averageValue: 10m
     
+  # - type: Pods
+  #   pods:
+  #     metric:
+  #       name: "kubernetes.io|pod|network|received_bytes_count"
+  #       selector: 
+  #         matchLabels:
+  #           resource.namespace_name: "demo"
+  #     target:
+  #       type: AverageValue
+  #       averageValue: 1k
   - type: Pods
     pods:
       metric:
-        name: "kubernetes.io|pod|network|received_bytes_count"
-        selector: 
-          matchLabels:
-            resource.namespace_name: "demo"
+        name: packets-per-second
       target:
         type: AverageValue
         averageValue: 1k
