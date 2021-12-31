@@ -38,6 +38,6 @@ spec:
     pods:
       metric:
         name: packets-per-second
-      target:
+  target:
         type: AverageValue
         averageValue: 1k
