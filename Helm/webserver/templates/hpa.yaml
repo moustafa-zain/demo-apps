@@ -12,15 +12,26 @@ spec:
     kind: Deployment
     name: "demo"
   metrics:
-    - type: External
-      external:
-        metric:
-          name: "monitoring.googleapis.com|uptime_check|request_latency"
-          selector: 
-            matchLabels:
-              resource.type: uptime_url
-              metric.labels.check_id: "google-uptime"
-              resource.project_id: '1014212621433'
-        target:
-          type: AverageValue
-          averageValue: 10m
+    # - type: External
+    #   external:
+    #     metric:
+    #       name: "monitoring.googleapis.com|uptime_check|request_latency"
+    #       selector: 
+    #         matchLabels:
+    #           resource.type: uptime_url
+    #           metric.labels.check_id: "google-uptime"
+    #           resource.project_id: '1014212621433'
+    #     target:
+    #       type: AverageValue
+    #       averageValue: 10m
+    
+  - type: Pods
+    pods:
+      metric:
+        name: "kubernetes.io|pod|network|received_bytes_count"
+        selector: 
+          matchLabels:
+            resource.namespace_name: 'demo'
+      target:
+        type: AverageValue
+        averageValue: 1k
