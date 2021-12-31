@@ -1,0 +1,26 @@
+---
+# Source: ajvar/templates/hpa.yaml
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: "demo-app"
+spec:
+  minReplicas: 1
+  maxReplicas: 3
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: "demo"
+  metrics:
+    - type: External
+      external:
+        metric:
+          name: "monitoring.googleapis.com|uptime_check|request_latency"
+          selector: 
+            matchLabels:
+              resource.type: uptime_url
+              metric.labels.check_id: "google-uptime"
+              resource.labels.project_id: observability-zain
+        target:
+          type: AverageValue
+          averageValue: 10m
